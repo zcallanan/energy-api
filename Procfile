@@ -1,1 +1,1 @@
-web: gunicorn de-energy.wsgi
+web: gunicorn django_energy_api.wsgi
