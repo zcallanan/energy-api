@@ -9,8 +9,8 @@ class YieldViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = StateYieldSerializer
 
     def get_queryset(self):
-        if ('capacity' and 'plz') in self.request.query_params:
-            # If a DE postal code is a paramater instead of a state, calculate kWh/year
+        if ('plz') in self.request.query_params:
+            # If a DE postal code is a paramater instead of a state, determine the state, then do calculation
             state = PostalCode.objects.filter(plz = self.request.query_params['plz']).values_list('state', flat=True)
             return Yield.objects.filter(state = state[0])
         return Yield.objects.filter(state = self.request.query_params['state'])

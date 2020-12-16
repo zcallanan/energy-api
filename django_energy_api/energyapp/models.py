@@ -7,7 +7,6 @@ class Yield(models.Model):
     state = models.CharField(primary_key=True, max_length = 2)
 
     class Meta:
-        managed = False
         db_table = 'Yield'
 
 class PostalCode(models.Model):
@@ -15,5 +14,4 @@ class PostalCode(models.Model):
     state = models.ForeignKey('Yield', models.DO_NOTHING, db_column='state', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'PostalCode'
