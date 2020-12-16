@@ -1,30 +1,16 @@
 from rest_framework import serializers
-from .models import Yield, PostalCode
+from .models import Yield
 
 class StateYieldSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Yield
-        fields = [ 'pv_yield', 'state']
-
-class CapacitySerializer(serializers.ModelSerializer):
-
     pv_yield = serializers.SerializerMethodField()
-    plz = serializers.SerializerMethodField()
 
     class Meta:
         model = Yield
-        fields = ('pv_yield', 'plz')
+        fields = ('pv_yield', 'state')
 
     def get_pv_yield(self, obj):
-        if self.context['request'].query_params['capacity']:
+        if self.context['request'].query_params.get('capacity'):
             # Return (pv_yield: calculated kWh/year)
-            return (int(obj.pv_yield) * int(self.context['request'].query_params['capacity']))
-
-    def get_plz(self, obj):
-        # Return (plz: state_name)
-        return obj.state
-
-
-
-
+            return (int(obj.pv_yield) * int(self.context['request'].query_params.get('capacity')))
+        return int(obj.pv_yield)
