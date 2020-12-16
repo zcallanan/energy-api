@@ -73,20 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_energy_api.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'energy',
-#         'USER': 'zach',
-#         'PASSWORD': '@nnie',
-#         'HOST': ''
-#     }
-# }
-
 DATABASES = {
     'default': dj_database_url.config(default='postgres://oixheahhzyooyi:18ef1a52ba9cd6f9dea518b23223da94a366c82c5fffb16fd958855fb241521a@ec2-54-208-233-243.compute-1.amazonaws.com:5432/dc50utiv3fvpim', conn_max_age=600, ssl_require=True)
 }
