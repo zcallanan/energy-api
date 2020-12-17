@@ -1,4 +1,7 @@
 # energy-api
+
+Demo API built with Python and the Django framework.
+
 **kWh/kWp**
 ----
 Fetches one kWh/kWp pv_yield when DE state or plz is provided.
@@ -96,3 +99,7 @@ Calculates one kWh/year pv_yield when capacity (kWp) and DE state or plz is prov
 - Postal Code param
 
 `https://de-energy.herokuapp.com/api/pv_yield?plz=08606&capacity=10`
+
+### Notes
+
+Specification called for using a field termed 'yield.' This is a protected keyword and I opted to use 'pv_yield' instead.
