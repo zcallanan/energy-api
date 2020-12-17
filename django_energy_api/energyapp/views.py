@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -12,8 +13,14 @@ class YieldViewSet(viewsets.ReadOnlyModelViewSet):
         if ('plz') in self.request.query_params:
             # If a DE postal code is a paramater instead of a state, determine the state, then do calculation
             state = PostalCode.objects.filter(plz = self.request.query_params['plz']).values_list('state', flat=True)
-            return Yield.objects.filter(state = state[0])
-        return Yield.objects.filter(state = self.request.query_params['state'])
+            if state:
+                return Yield.objects.filter(state = state[0])
+            raise Http404("PLZ does not exist")
+        result = Yield.objects.filter(state = self.request.query_params['state'])
+        if result:
+            return result
+
+        raise Http404("State does not exist")
 
 
     def pv_yield_list(self, request):

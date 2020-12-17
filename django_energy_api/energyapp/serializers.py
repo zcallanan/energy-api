@@ -7,7 +7,8 @@ class StateYieldSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Yield
-        fields = ('pv_yield', 'state')
+        fields = ['pv_yield', 'state']
+        read_only_fields = ['pv_yield', 'state']
 
     def get_pv_yield(self, obj):
         if self.context['request'].query_params.get('capacity'):
