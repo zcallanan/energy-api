@@ -102,4 +102,5 @@ Calculates one kWh/year pv_yield when capacity (kWp) and DE state or plz is prov
 
 ### Notes
 
-Specification called for using a field termed 'yield.' This is a restricted keyword and I opted to use 'pv_yield' instead.
+- Specification called for using a field termed 'yield.' This is a restricted keyword and I opted to use 'pv_yield' instead
+- The original specification included supplying the 'plz' param instead of 'state' plus 'capacity.' This was changed later to supplying 'state' with 'capacity'. I've left support in for 'plz' as an additional alternative feature 
