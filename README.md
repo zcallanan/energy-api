@@ -25,7 +25,7 @@ Fetches one kWh/kWp pv_yield when DE state or plz is provided.
 
 *Alternatively Replace State With*
 
-`plz=[integer]`
+`plz=[integers]`
 
 - Five digits required
 - German postal code value
@@ -75,7 +75,7 @@ Calculates one kWh/year pv_yield when capacity (kWp) and DE state or plz is prov
 
 *Alternatively Replace State With*
 
-`plz=[integer]`
+`plz=[integers]`
 
 - Five digits required
 - German postal code value
