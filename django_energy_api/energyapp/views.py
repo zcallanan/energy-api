@@ -16,7 +16,13 @@ class YieldViewSet(viewsets.ReadOnlyModelViewSet):
             if state:
                 return Yield.objects.filter(state = state[0])
             raise Http404("PLZ does not exist")
+        elif ('state' or 'plz') not in self.request.query_params:
+            # If state or plz are not params, then raise 404
+            raise Http404("No State or PLZ provided")
+
+        # If state is provided, filter by it
         result = Yield.objects.filter(state = self.request.query_params['state'])
+
         if result:
             return result
 
