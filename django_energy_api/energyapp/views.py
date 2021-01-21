@@ -4,10 +4,12 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Yield, PostalCode
 from .serializers import StateYieldSerializer
+from rest_framework.renderers import JSONRenderer
 
 class YieldViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = StateYieldSerializer
+    renderer_classes = [JSONRenderer]
 
     def get_queryset(self):
         if ('plz') in self.request.query_params:
