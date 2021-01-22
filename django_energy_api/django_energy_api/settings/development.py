@@ -10,7 +10,7 @@ DATABASES = {
             'NAME': 't_energy'
         },
         'USER': 'def',
-        'PASSWORD': 'myPass',
+        'PASSWORD': env('PASSWORD'),
         'HOST': 'localhost',
         'DISABLE_SERVER_SIDE_CURSORS': True
     }
