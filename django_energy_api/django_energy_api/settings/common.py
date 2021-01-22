@@ -14,21 +14,21 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 
+import environ
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))  # reading .env file
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kf5%d+92ghnkg$+s(ty8h9u4$^*fy_ppu393vx9n0um)2$+di&'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['de-energy.herokuapp.com']
-
 
 # Application definition
 
@@ -73,11 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_energy_api.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(default='postgres://oixheahhzyooyi:18ef1a52ba9cd6f9dea518b23223da94a366c82c5fffb16fd958855fb241521a@ec2-54-208-233-243.compute-1.amazonaws.com:5432/dc50utiv3fvpim', conn_max_age=600, ssl_require=True)
-}
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -116,5 +111,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-django_heroku.settings(locals())
