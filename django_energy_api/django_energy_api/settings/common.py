@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'energyapp',
-    'django_filters'
+    'django_filters',
+    'environ'
 ]
 
 MIDDLEWARE = [
